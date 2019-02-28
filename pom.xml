@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>works.buddy.samples</groupId>
     <artifactId>works-with-heroku</artifactId>
-    <version>${version}</version>
+    <version>3.5.2</version>
     <packaging>war</packaging>
     <dependencies>
         <dependency>

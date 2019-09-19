@@ -26,6 +26,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+         
+    <distributionManagement>
+           <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Releases</name>
+            <url>http://169.50.188.43:30855/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshot</id>
+            <name>Nexus Snapshot</name>
+            <url>http://169.50.188.43:30855/repository/maven-snapshots/</url>
+        </snapshotRepository>
+  </distributionManagement>     
 
     <build>
         <plugins>

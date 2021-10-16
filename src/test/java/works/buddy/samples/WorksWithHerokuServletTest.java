@@ -33,6 +33,7 @@ public class WorksWithHerokuServletTest {
     public void testDoGet() throws Exception {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintWriter writer = new PrintWriter(out);
+        
         when(response.getWriter()).thenReturn(writer);
 
         servlet.doGet(request, response);

@@ -9,7 +9,7 @@ stages {
 
 	  stage('Build') {
     		steps {
-      		sh 'cd /home/ubuntu/jenkins/workspace/PipelineProj'
+      		sh 'cd /home/ubuntu/jenkins/workspace/PipelineProj/'
 		sh 'mvn clean install'
    	 	}
            }

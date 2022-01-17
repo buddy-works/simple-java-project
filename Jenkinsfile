@@ -42,7 +42,6 @@ OGAgentPipeline(containers) {
      container('jdk') {
     def scannerHome = tool 'SonarScanner';  
       withSonarQubeEnv() {
-        sh "mvn clean install"
         sh "${scannerHome}/bin/sonar-scanner "
     }  
   }

@@ -36,13 +36,6 @@ def branchTagFriendly
 OGAgentPipeline(containers) {
   stage('Setup') {
     scmVars = checkout scm
-    tags = [branchTagFriendly]
-
-    if (!ogGit.currentBuildIsPullRequest(params.BRANCH_NAME)) {
-      tags << scmVars.GIT_COMMIT
-
-      if (params.BRANCH_NAME == 'master') {
-        tags << 'latest'
       }
     }
 

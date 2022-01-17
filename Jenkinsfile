@@ -40,11 +40,9 @@ OGAgentPipeline(containers) {
 
   stage('SonarQube Analysis') {
      container('sonarscanner') {
-    def scannerHome = tool 'SonarScanner';
-    if ( params.SERVICE_NAME == "budget-gateway-service" ) {  
+    def scannerHome = tool 'SonarScanner';  
       withSonarQubeEnv() {
         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectBaseDir=${params.GRADLE_SETTINGS_PATH}/${params.SERVICE_NAME}/"
-      }
     }  
   }
   } // stage('Build Jar')

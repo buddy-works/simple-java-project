@@ -36,7 +36,6 @@ def branchTagFriendly
 OGAgentPipeline(containers) {
   stage('Setup') {
     scmVars = checkout scm
-    branchTagFriendly = params.BRANCH_NAME.replaceAll('/', '_')
     tags = [branchTagFriendly]
 
     if (!ogGit.currentBuildIsPullRequest(params.BRANCH_NAME)) {

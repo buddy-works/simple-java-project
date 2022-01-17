@@ -39,10 +39,10 @@ OGAgentPipeline(containers) {
       }
 
   stage('SonarQube Analysis') {
-     container('sonarscanner') {
+     container('jdk') {
     def scannerHome = tool 'SonarScanner';  
       withSonarQubeEnv() {
-        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectBaseDir=${params.GRADLE_SETTINGS_PATH}/${params.SERVICE_NAME}/"
+        sh "${scannerHome}/bin/sonar-scanner "
     }  
   }
   } // stage('Build Jar')

@@ -37,10 +37,6 @@ OGAgentPipeline(containers) {
   stage('Setup') {
     scmVars = checkout scm
       }
-    }
-
-    echo "Docker image Tags to publish: ${tags.inspect()}"
-  } // stage('Setup')
 
   stage('SonarQube Analysis') {
      container('sonarscanner') {
@@ -53,6 +49,5 @@ OGAgentPipeline(containers) {
   }
   } // stage('Build Jar')
 
-  
-} // OGAgentPipeline(containers)
 
+} // OGAgentPipeline(containers)

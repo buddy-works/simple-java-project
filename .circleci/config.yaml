@@ -1,0 +1,12 @@
+jobs:
+  build:
+    docker:
+      - image: openjdk:latest
+    steps:
+      - checkout
+      - run: echo "this is the build job"
+
+workflows:
+  build_and_test:
+    jobs:
+      - build

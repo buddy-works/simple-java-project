@@ -1,0 +1,26 @@
+pipeline{
+agent {
+  label 'slave1'
+}
+stages {
+	  stage('Git Checkout') {
+    		steps {
+      		checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ubuntuId', url: 'https://github.com/JevitaD/simple-java-project']]])
+    		}
+           }
+
+	  stage('Build') {
+    		steps {
+      		sh 'cd /home/ubuntu/jenkins/workspace/PipelineProj/'
+		sh 'mvn clean install'
+   	 	}
+           }
+
+	  stage('Deploy') {
+    		steps {
+     	 	sh 'sudo cp /home/ubuntu/jenkins/workspace/PipelineProj/target/*.war /opt/apache-tomcat-9.0.55/webapps'
+    		}
+  	  }
+
+	}
+}

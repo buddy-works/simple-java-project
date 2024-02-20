@@ -12,12 +12,12 @@ parameters:
   - name: DOCKER_BUILD_IMAGE
     displayName: Docker image
     type: string
-    default: 'openjdk:22-ea-17-oracle'
-  - name: PET_CLINIC_APP  
+    default: 'gnishanth777/springapp:1.4.0'
+  - name: JAVA_APP  
     displayName: Petclinic 
     type: object
     default:
-    - name: petClinic
+    - name: javaApp
       build:
         enabled: true
         setup_env: ../../../custom/jobs/build/setup_env_build.yml 

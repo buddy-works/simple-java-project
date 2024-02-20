@@ -16,7 +16,7 @@ stages:
     - checkout: self 
       clean: true
       submodules: recursive
-      path: $(code_repo_name)
+      #path: $(code_repo_name)
     - template: ../../jobs/build/build.yml
       parameters:
         APP: ${{ parameters.APP }}       

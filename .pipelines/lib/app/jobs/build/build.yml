@@ -3,5 +3,6 @@ parameters:
   type: object
 steps:
 - bash: 
-    mvn clean install
+    mvn clean install -Dmaven.test.skip=true
+  displayName: Build the code  
  

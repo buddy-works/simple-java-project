@@ -14,7 +14,7 @@ parameters:
     type: string
     default: 'gnishanth777/springapp:1.4.0'
   - name: JAVA_APP  
-    displayName: Petclinic 
+    displayName: JavaApp
     type: object
     default:
     - name: javaApp
@@ -33,7 +33,7 @@ variables:
 - name: default_pool
   value: 'Azure Pipelines'   
 stages:
-- ${{ each app in parameters.PET_CLINIC_APP }}:
+- ${{ each app in parameters.JAVA_APP }}:
   - template: ../lib/app/stages/build/build.yml
     parameters:
       APP: ${{ app }}     

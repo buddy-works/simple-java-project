@@ -3,7 +3,7 @@ parameters:
   type: object
 stages:
 - stage: build_${{ parameters.APP.name }}
-  displayName: Build pet clinic app  
+  displayName: BuildJavaApp
   jobs:
   - job: build_${{ parameters.APP.name }}
     pool:

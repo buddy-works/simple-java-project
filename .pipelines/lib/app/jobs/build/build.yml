@@ -1,0 +1,11 @@
+parameters:
+- name: APP
+  type: object
+steps:
+- bash: 
+   echo $PWD
+   cd $PWD
+   cd ../
+   echo $PWD
+   mvn clean install
+ 

@@ -3,4 +3,4 @@ steps:
     cd /scripts 
     chmod +x script.sh
     ./script.sh
-displayName: setup env for maven   
+  displayName: Setup env for Maven   

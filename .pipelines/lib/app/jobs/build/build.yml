@@ -15,10 +15,10 @@ steps:
   inputs:
     SourceFolder: $(Build.Repository.LocalPath)/target
     Contents: '*.war'
-    TargetFolder: $(Build.ArtifactStagingDirectory)/${{ parameters.VARIANT.name }}
+    TargetFolder: $(Build.ArtifactStagingDirectory)/${{ parameters.APP.name }}
 
 - ${{ if eq(parameters.PUBLISH, 'True') }}:
-  - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.VARIANT.name }}'
+  - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}'
     artifact: BUILD_${{ parameters.APP.name }}
     displayName: Publish Artifacts ${{ parameters.APP.name }}
  

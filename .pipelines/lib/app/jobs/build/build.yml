@@ -10,8 +10,15 @@ steps:
     mvn clean install -Dmaven.test.skip=true
   displayName: Build the code
 
+- task: CopyFiles@2
+  displayName: Copy Artifacts from local to staging
+  inputs:
+    SourceFolder: $(Build.Repository.LocalPath)/target
+    Contents: '*.war'
+    TargetFolder: $(Build.ArtifactStagingDirectory)/${{ parameters.VARIANT.name }}
+
 - ${{ if eq(parameters.PUBLISH, 'True') }}:
-  - publish: '$(Build.ArtifactoryStagingDirectory)/target/*.war'
+  - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.VARIANT.name }}'
     artifact: BUILD_${{ parameters.APP.name }}
     displayName: Publish Artifacts ${{ parameters.APP.name }}
  

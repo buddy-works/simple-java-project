@@ -1,8 +1,19 @@
 parameters:
 - name: APP
   type: object
+  
+- name: PUBLISH
+  type: boolean
+  default: True  
 steps:
 - bash: 
     mvn clean install -Dmaven.test.skip=true
-  displayName: Build the code  
+    mkdir $(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}
+    cp target/works-with-heroku-1.0.war $(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}
+  displayName: Build the code
+
+- ${{ if eq(parameters.PUBLISH, 'True') }}:
+  - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}'
+    artifact: BUILD_${{ parameters.APP.name }}
+    displayName: Publish Artifacts ${{ parameters.APP.name }}
  

@@ -8,8 +8,8 @@ parameters:
 steps:
 
 - ${{ if ne(parameters.VARIANT.build.setup_env, 'none') }}:
-  - template: ${{ parameters.VARIANT.build.setup_env }}
-  
+  - template: ${{ parameters.APP.build.setup_env }}
+
 - bash: 
     mvn clean deploy -Dmaven.test.skip=true
   displayName: Build the code

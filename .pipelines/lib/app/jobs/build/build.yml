@@ -11,7 +11,7 @@ steps:
   - template: ${{ parameters.APP.build.setup_env }}
 
 - bash: 
-    mvn clean deploy -Dmaven.test.skip=true
+    mvn clean install deploy -Dmaven.test.skip=true
   displayName: Build the code
 
 - task: CopyFiles@2

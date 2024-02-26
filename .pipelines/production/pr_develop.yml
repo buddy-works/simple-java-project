@@ -20,7 +20,7 @@ parameters:
     - name: javaApp
       build:
         enabled: true
-        setup_env: ../../../custom/jobs/build/setup_build_env.yml 
+        setup_env: ../../custom/jobs/build/setup_build_env.yml 
         docker_image: default_image
         pool: default_pool
           

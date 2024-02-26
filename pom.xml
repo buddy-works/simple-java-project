@@ -6,7 +6,7 @@
     <artifactId>works-with-heroku</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <repositories>
+    <distributionManagement>
     <repository>
   <id>udz1kor</id>
   <url>https://pkgs.dev.azure.com/udz1kor/_packaging/udz1kor/maven/v1</url>
@@ -17,7 +17,7 @@
     <enabled>true</enabled>
   </snapshots>
 </repository>
-    </repositories>
+</distributionManagement>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>

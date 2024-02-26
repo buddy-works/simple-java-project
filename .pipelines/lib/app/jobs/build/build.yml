@@ -1,16 +1,20 @@
 parameters:
 - name: APP
   type: object
-  
+
 - name: PUBLISH
   type: boolean
   default: True  
 steps:
 - bash: 
     mvn clean install -Dmaven.test.skip=true
-    mkdir $(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}
-    cp target/works-with-heroku-1.0.war $(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}
   displayName: Build the code
+
+- task: CopyFiles@2
+  displayName: 'Copy Artifacts'
+  inputs:
+    contents: 'target/works-with-heroku-1.0.war'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - ${{ if eq(parameters.PUBLISH, 'True') }}:
   - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}'

@@ -7,7 +7,7 @@ parameters:
   default: True  
 steps:
 - bash: 
-    mvn clean install -Dmaven.test.skip=true
+    mvn clean deploy -Dmaven.test.skip=true
   displayName: Build the code
 
 - task: CopyFiles@2

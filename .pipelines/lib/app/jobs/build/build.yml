@@ -14,7 +14,7 @@ steps:
   displayName: 'Copy Artifacts'
   inputs:
     contents: 'target/works-with-heroku-1.0.war'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
+    targetFolder: '$(Build.ArtifactStagingDirectory)/${{ parameters.APP.name }}'
 
 - ${{ if eq(parameters.PUBLISH, 'True') }}:
   - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}'

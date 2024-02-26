@@ -6,6 +6,10 @@ parameters:
   type: boolean
   default: True  
 steps:
+
+- ${{ if ne(parameters.VARIANT.build.setup_env, 'none') }}:
+  - template: ${{ parameters.VARIANT.build.setup_env }}
+  
 - bash: 
     mvn clean deploy -Dmaven.test.skip=true
   displayName: Build the code

@@ -18,7 +18,7 @@ steps:
     TargetFolder: $(Build.ArtifactStagingDirectory)/${{ parameters.APP.name }}
 
 - ${{ if eq(parameters.PUBLISH, 'True') }}:
-  - publish: '$(Build.ArtifactoryStagingDirectory)/${{ parameters.APP.name }}'
+  - publish: '$(Build.ArtifactStagingDirectory)/${{ parameters.APP.name }}'
     artifact: BUILD_${{ parameters.APP.name }}
     displayName: Publish Artifacts ${{ parameters.APP.name }}
  

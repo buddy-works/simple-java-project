@@ -10,14 +10,8 @@ steps:
     mvn clean install -Dmaven.test.skip=true
   displayName: Build the code
 
-- task: CopyFiles@2
-  displayName: 'Copy Artifacts'
-  inputs:
-    contents: 'target/works-with-heroku-1.0.war'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-
 - ${{ if eq(parameters.PUBLISH, 'True') }}:
-  - publish: '$(Build.ArtifactoryStagingDirectory)'
-    artifact: ${{ parameters.APP.name }}
+  - publish: '$(Build.ArtifactoryStagingDirectory)/target/*.war'
+    artifact: BUILD_${{ parameters.APP.name }}
     displayName: Publish Artifacts ${{ parameters.APP.name }}
  

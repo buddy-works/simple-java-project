@@ -12,7 +12,7 @@ parameters:
   - name: DOCKER_BUILD_IMAGE
     displayName: Docker image
     type: string
-    default: 'gnishanth777/spring:1.5.0'
+    default: 'gnishanth777/spring:1.6.0'
   - name: JAVA_APP  
     displayName: JavaApp
     type: object

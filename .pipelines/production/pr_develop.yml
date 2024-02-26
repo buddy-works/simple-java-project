@@ -1,0 +1,42 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger: none
+pr:
+  branches:
+    include:
+    - main
+parameters:
+  - name: DOCKER_BUILD_IMAGE
+    displayName: Docker image
+    type: string
+    default: 'gnishanth777/spring:1.8.0'
+  - name: JAVA_APP  
+    displayName: JavaApp
+    type: object
+    default:
+    - name: javaApp
+      build:
+        enabled: true
+        setup_env: ../../custom/jobs/build/setup_build_env.yml 
+        docker_image: default_image
+        pool: default_pool
+          
+          
+resources:
+ containers:
+  - container: default_image
+    image: ${{ parameters.DOCKER_BUILD_IMAGE }}
+variables:    
+- name: default_pool
+  value: 'Azure Pipelines'   
+stages:
+- ${{ each app in parameters.JAVA_APP }}:
+  - template: ../lib/app/stages/build/build.yml
+    parameters:
+      APP: ${{ app }}     
+    
+
+

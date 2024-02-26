@@ -6,6 +6,18 @@
     <artifactId>works-with-heroku</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
+    <distributionManagement>
+    <repository>
+     <id>artifacts</id>
+     <url>https://pkgs.dev.azure.com/udz1kor/azurepipelinestest/_packaging/artifacts/maven/v1</url>
+  <releases>
+    <enabled>true</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>
+</distributionManagement>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>

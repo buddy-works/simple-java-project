@@ -1,0 +1,15 @@
+{
+  "name": "Spring Framework Petclinic",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "USERNAME": "${localEnv:USER}"
+    }
+  },
+  "containerEnv": {
+    "USER": "${localEnv:USER}"
+  }
+  
+
+}

@@ -1,0 +1,36 @@
+parameters:
+- name: APP
+  type: object
+
+- name: PUBLISH
+  type: boolean
+  default: True  
+steps:
+
+- ${{ if ne(parameters.APP.build.setup_env, 'none') }}:
+  - template: ${{ parameters.APP.build.setup_env }}
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'simple-java-project/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    mavenAuthenticateFeed: true
+    publishJUnitResults: false
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'deploy'
+
+- task: CopyFiles@2
+  displayName: Copy Artifacts from local to staging
+  inputs:
+    SourceFolder: $(Build.Repository.LocalPath)/target
+    Contents: '*.war'
+    TargetFolder: $(Build.ArtifactStagingDirectory)/${{ parameters.APP.name }}
+
+- ${{ if eq(parameters.PUBLISH, 'True') }}:
+  - publish: '$(Build.ArtifactStagingDirectory)/${{ parameters.APP.name }}'
+    artifact: BUILD_${{ parameters.APP.name }}
+    displayName: Publish Artifacts ${{ parameters.APP.name }}
+ 

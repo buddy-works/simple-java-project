@@ -11,9 +11,9 @@ public class WorksWithHerokuServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/plain");
-        response.setStatus(404);
-        PrintWriter writer = response.getWriter();
-        writer.print("Buddy Works with Heroku");
-        writer.close();
+        response.setStatus(HttpServletResponse.SC_OK);
+        try (PrintWriter writer = response.getWriter()) {
+            writer.print("Buddy Works with Heroku");
+        }
     }
 }
